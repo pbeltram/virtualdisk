@@ -1,0 +1,88 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%PROV%
+DriverVer=04/04/2007, 5.00.2064
+CatalogFile=vdbus.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+vdbus.sys  = 1,,
+
+;*****************************************
+; VDBus Install Section
+;*****************************************
+
+[Manufacturer]
+%StdMfg%=Standard,NT$ARCH$
+
+; For XP and later
+[Standard.NT$ARCH$]
+%VDBus.DeviceDesc%=VDBus_Device, root\vdbus
+
+[VDBus_Device.NT]
+CopyFiles=Drivers_Dir
+
+[VDBus_Device.NT.HW]
+AddReg=VDBus_Device.NT.AddReg
+
+[VDBus_Device.NT.AddReg]                            
+HKR,,DeviceCharacteristics,0x10001,0x0100
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)"
+
+[Drivers_Dir]
+vdbus.sys
+
+;-------------- Service installation
+[VDBus_Device.NT.Services]
+AddService = vdbus,%SPSVCINST_ASSOCSERVICE%, vdbus_Service_Inst
+
+; -------------- vdbus driver install sections
+[vdbus_Service_Inst]
+DisplayName    = %vdbus.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vdbus.sys
+LoadOrderGroup = Extended Base
+
+;
+;--- VDBus_Device Coinstaller installation ------
+;
+[DestinationDirs]
+VDBus_Device_CoInstaller_CopyFiles = 11
+
+[VDBus_Device.NT.CoInstallers]
+AddReg=VDBus_Device_CoInstaller_AddReg
+CopyFiles=VDBus_Device_CoInstaller_CopyFiles
+
+[VDBus_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoinstaller01000.dll,WdfCoInstaller"
+
+[VDBus_Device_CoInstaller_CopyFiles]
+WdfCoinstaller01000.dll
+
+[SourceDisksFiles]
+WdfCoinstaller01000.dll=1 ; make sure the number matches with SourceDisksNames
+
+[VDBus_Device.NT.Wdf]
+KmdfService = vdbus, vdbus_wdfsect
+
+[vdbus_wdfsect]
+KmdfLibraryVersion = 1.0
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+PROV = ""
+StdMfg = "(Standard system devices)"
+DiskId1 = "VD Bus Installation Disk #1"
+VDBus.DeviceDesc = "Virtual Disk Bus Enumerator"
+vdbus.SVCDESC = "Virtual Disk Bus Enumerator"
+
+; End Of File.

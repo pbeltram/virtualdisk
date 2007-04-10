@@ -1,0 +1,25 @@
+[Dynamic, Provider("WMIProv"),
+ WMI,
+ Description("Virtual Disk Bus driver information"),
+ guid("{BF905556-4082-4050-932C-D7AC29C27C88}"),
+ locale("MS\\0x409")]
+class VDBusInformation
+{
+    [key, read]
+     string InstanceName;
+    [read] boolean Active;
+
+    [WmiDataId(1),
+     read,
+     Description("Number of errors that occurred on this device")]
+    uint32   ErrorCount;
+
+    [WmiDataId(2),
+     read,
+     write,
+     Description("The DebugPrintLevel property indicates the debug output level.")]
+    uint32 DebugPrintLevel;
+
+};
+
+

@@ -1,0 +1,17 @@
+TARGETNAME=vdenum
+TARGETTYPE=PROGRAM
+UMTYPE=console
+UMENTRY=main
+UMBASE=0x400000
+
+VER_MODNAME=enum
+
+INCLUDES=..; 
+
+TARGETLIBS=$(SDK_LIB_PATH)\setupapi.lib
+
+TARGETPATH=.
+           
+SOURCES = enum.c module.rc
+         
+         
