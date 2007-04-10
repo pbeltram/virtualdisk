@@ -1,7 +1,7 @@
 1. Introduction
 
 This device driver implements KMDF based virtual bus driver and generic virtual disk hosted on it. 
-The virtual bus driver code is derived from Microsoft KMDF 1.0 “Toaster Bus” source sample. 
+The virtual bus driver code is derived from Microsoft KMDF 1.0 "Toaster Bus" source sample. 
 The result of this driver is functionality that allows user to add any (limited by OS resources) 
 number virtual disks to Windows OS. Virtual disks are plugged-in (and out) by command line utility.
 
@@ -38,7 +38,7 @@ enhance project functionality.
 
 If this is something that was helpful for you, than you can do something to help others too. 
 You can check on internet with various charity organizations related to undeveloped countries children education. 
-It’s completely up to you, what you can do and what you are willing to do.
+It's completely up to you, what you can do and what you are willing to do.
 
 This was my motivation for starting this project.
 Primoz Beltram (primoz.beltram@siol.net)
