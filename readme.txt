@@ -17,19 +17,33 @@ virtual disk (real) storage is open to be anywhere (e.g. RAM, file, network, …).
 
 2. Building
 
-Code is based and developed with Microsoft KMDF version 1.0. 
-All tools needed to develop and build this driver, including KMDF, are available as free downloads from 
-the internet.
-<todo: building scripts>.
+Code is based and developed with Microsoft KMDF version 1.0 so you will need to download and install it. 
+The current KMDF version is 1.5. I did not try with it (something todo), so all steps in this doc are 
+related to KMDF 1.0.
+
+You will have to install Windows 2003 SP1 DDK and KMDF. Check on this page where and how to find them http://www.microsoft.com/whdc/resources/downloads.mspx. 
+
+Run do_vdbuild.cmd to build vdbus.sys driver and vdenum.exe console application.
+
 
 3. Installing
 
-<todo: all>.
+Copy vdbus.sys, vdbus.inf, vdenum.exe and WdfCoInstaller01000.dll (from \WINDDK\WDF\KMDF10\redist\wdf\x86) 
+to some directory (e.g. C:\vdbus).
+
+Then run:
+- to install: devcon.exe install c:\vdbus\vdbus.inf root\vdbus
+- to update (if rebuild):  devcon.exe update c:\vdbus\vdbus.inf root\vdbus
+- to remove:  devcon.exe remove root\vdbus
+
+devcon.exe is standard DDK utility located in \WINDDK\3790.1830\tools\devcon\i386.
 
 4. Debugging
 
-WinDbg kernel debugging is something you will need for debugging. WinDbg is downloadable from <todo: put link here>.
-I also suggest subscription to OSR mailing lists. <todo: links>.
+WinDbg kernel debugging is something you will need for debugging. WinDbg is downloadable from http://www.microsoft.com/whdc/resources/downloads.mspx.
+
+I also suggest subscription to OSR mailing lists. 
+Go to http://www.osronline.com/ and follow ListServer links.
 
 p.s.
 
