@@ -13,7 +13,7 @@ formatted with any supported file system (e.g. as NTFS) and supported by any ser
 providing for generic disks (e.g. volume snapshots). 
 
 Functionality this project provides is something similar to iSCSI, with the difference, that this project 
-virtual disk (real) storage is open to be anywhere (e.g. RAM, file, network, …).
+virtual disk (real) storage is open to be anywhere (e.g. RAM, file, network, ...).
 
 2. Building
 
@@ -22,6 +22,9 @@ The current KMDF version is 1.5. I did not try with it (something todo), so all 
 related to KMDF 1.0.
 
 You will have to install Windows 2003 SP1 DDK and KMDF. Check on this page where and how to find them http://www.microsoft.com/whdc/resources/downloads.mspx. 
+
+NOTE: Device driver was run and tested on W2K-latest_sp and WXP (no sp). 
+Check known problems described in sourceforge.net tracker: 1774307 and 1774304.
 
 Run do_vdbuild.cmd to build vdbus.sys driver and vdenum.exe console application.
 
