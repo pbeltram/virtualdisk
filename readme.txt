@@ -58,4 +58,4 @@ You can check on internet with various charity organizations related to undevelo
 It's completely up to you, what you can do and what you are willing to do.
 
 This was my motivation for starting this project.
-Primoz Beltram (primoz.beltram@siol.net)
+Primoz Beltram (primoz.beltram@gmail.com)
